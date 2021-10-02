@@ -56,12 +56,9 @@ void main()
 			fscanf_s(f, "%d", &t.brother[i]);
 			printf("%d ", t.brother[i]);
 		}
-
 		parents = father(t);
-
 		printf("\n\n\tEnter the vertex whose parent you want to find: ");
 		scanf_s("%d", &vertex);
-
 		while (!feof(stdin))
 		{
 			while ((vertex < 1 || vertex > t.vertices) && !feof(stdin)) //while loop to check if the vertex value is valid
@@ -69,14 +66,12 @@ void main()
 				printf("\nInvalid vertex value. Try again (1-%d) (or CTRL+Z to cancel): ", t.vertices);
 				scanf_s("%d", &vertex);
 			}
-
 			if (!feof(stdin))
 			{
 				if (parents[vertex - 1] == -1)
 					printf("\nVertex %d is the root of the tree\n", vertex);
 				else
 					printf("\nThe parent of vertex %d is vertex %d\n", vertex, parents[vertex - 1]);
-
 				printf("\n\n\tEnter another vertex (or CTRL+Z to cancel): ");
 				scanf_s("%d", &vertex);
 			}
