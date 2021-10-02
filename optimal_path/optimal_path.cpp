@@ -5,7 +5,7 @@
 #define INF 10000 //infinite global variable
 //this is used for when we have weighted graphs -> when two vertices are not connected, in a weighted graph their weight will be infinite
 
-//			-----------------graph and queue structs-----------------
+//			-----------------graph and solution structs-----------------
 //graph struct 
 typedef struct {
 	int vertices; // no. of vertices
@@ -22,7 +22,6 @@ typedef struct {
 	int edges; 
 } solution;
 
-//			-----------------dynamically allocated matrix-----------------
 //			~~~display a matrix~~~
 //input: a - matrix address; l - no. of lines; c - no. of columns; t - title*
 // * we set the parameter to 0 as default so that we can check if we want a title or not before displaying it
@@ -69,7 +68,7 @@ void deallocate(int**& a, int l)
 
 
 //			-----------------reading a graph from a text file-----------------
-//			~~~convert table representation to adjacency matrix~~~
+//			~~~convert table representation to adjacency matrix for a graph~~~
 //input: g - graph
 //output: g - graph
 void convertMatrix(graph& g)
@@ -131,7 +130,6 @@ int readGraph(char* name, graph& g, char weight = 'n', char orient = 'n')
 }
 
 //convert table matrix to adjacency matrix
-
 int** convert(int** table, int edges, int vertices, int orient)
 {
 	int** adj, i, j;
