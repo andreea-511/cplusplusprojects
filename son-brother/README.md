@@ -20,10 +20,10 @@ Although not necessary in my example file I also included the vertex that repres
 The root of the tree graph can be easily identified from the Son-Brother matrix because it is the only vertex value that does not appear at all.
 
 ## Additional files
-The [.txt file]() offered as a tree graph representation example in order to test the source code can be found [here]().
+The [.txt file](https://github.com/andreea-511/cplusplusprojects/blob/main/son-brother/example.txt) offered as a tree graph representation example in order to test the source code can be found [here](https://github.com/andreea-511/cplusplusprojects/blob/main/son-brother/example.txt).
 
 ## How I solved it
-**The source code for this problem can be found [here](https://github.com/andreea-511/cplusplusprojects/main/son-brother/son-brother.cpp)**
+**The source code for this problem can be found [here](https://github.com/andreea-511/cplusplusprojects/blob/main/son-brother/son-brother.cpp)**
 
 In order to solve the problem I created a new vector that has the parent of all vertices except the root which has -1. By reading the vector you can find the parent of any given vertex. But how do we make this vector?
 
