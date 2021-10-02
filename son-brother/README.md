@@ -1,6 +1,6 @@
 ## The problem presented
 ***Write a C++ program that finds the parent of a given vertex x using the Son-Brother tree graph representation.***
-
+_____________________________
 A son-brother tree graph representation is usually a matrix with two rows and a variable number of collumns that describes a tree graph. An example of such representation is as follows:
 ```
  2  5  0  8  0  9  0 14  0  0  0  0  0  0  0  0
