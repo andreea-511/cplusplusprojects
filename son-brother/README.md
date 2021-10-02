@@ -1,3 +1,8 @@
+## The problem presented
+Write a C++ program that finds the parent of a given vertex x using the Son-Brother tree graph representation.
+
+
+
 A son-brother tree graph representation is usually a matrix with two rows and a variable number of collumns that describes a tree graph. An example of such representation is as follows:
 ```
  2  5  0  8  0  9  0 14  0  0  0  0  0  0  0  0
@@ -15,9 +20,6 @@ Although not necessary in my example file I also included the vertex that repres
 
 ### Observation 1:
 The root of the tree graph can be easily identified from the Son-Brother matrix because it is the only vertex value that does not appear at all.
-
-## The problem presented
-Write a C++ program that finds the parent of a given vertex x using the Son-Brother tree graph representation.
 
 ## Additional files
 The [.txt file]() offered as a tree graph representation example in order to test the source code can be found [here]().
