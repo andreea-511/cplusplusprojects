@@ -1,4 +1,5 @@
 A son-brother tree graph representation is usually a matrix with two rows and a variable number of collumns that describes a tree graph. An example of such representation is as follows:
+
 2  5  0  8  0  9  0 14  0  0  0  0  0  0  0  0
 0  3  4  0  6  7  0  0 10 11 12 13  0 15 16  0
 The two rows represent the son row and the brother row in this example but it is not mandatory to be in this order and it should always be specified. In my code and problem I will be using this format. 
