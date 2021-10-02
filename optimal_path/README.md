@@ -8,7 +8,7 @@ becomes
 v1, v2, v4, v5, v9, v8, v10
 ```
  ## Additional files
- There are 3 example files which can all be found [here](https://github.com/andreea-511/cplusplusprojects/tree/main/optimal_path). Each .txt file contains a table representation of a matrix. On the first row we have the number of vertices and edges and the rest of the rows represent the edges by the two vertices that the edge connects. For the example above we have the following .txt file:
+ There are 3 example files which can all be found [here](https://github.com/andreea-511/cplusplusprojects/tree/main/optimal_path/examples). Each .txt file contains a table representation of a matrix. On the first row we have the number of vertices and edges and the rest of the rows represent the edges by the two vertices that the edge connects. For the example above we have the following .txt file:
  ```
 10 15
 1 2
