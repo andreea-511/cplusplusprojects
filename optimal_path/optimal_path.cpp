@@ -83,7 +83,6 @@ void convertMatrix(graph& g)
 	for (i = 0; i < g.vertices; i++)
 		for (j = 0; j < g.vertices; j++)
 			g.adj[i][j] = value;
-
 	for (i = 0; i < g.edges; i++) // reading the table representation of the graph
 	// structure: g.table[i][0] - start vertex; g.table[i][1] - end vertex; g.table[i][2] - weight (1 if no weight)
 	{
@@ -125,7 +124,6 @@ int readGraph(char* name, graph& g, char weight = 'n', char orient = 'n')
 		for (i = 0; i < g.edges; i++)
 			for (j = 0; j < g.weight + 2; j++)
 				fscanf_s(f, "%d", &g.table[i][j]);
-
 		convertMatrix(g);
 		fclose(f);
 	}
@@ -147,7 +145,6 @@ int** convert(int** table, int edges, int vertices, int orient)
 		if (orient == 0)
 			adj[table[i][1] - 1][table[i][0] - 1] = 1; // if not oriented -> symmetric matrix
 	}
-
 	return adj;
 }
 
@@ -157,11 +154,9 @@ int** roywarshall(int** adj, int n)
 	int i, j, k;
 	int** copy;
 	copy = allocate(n, n);
-
 	for (i = 0; i < n; i++)
 		for (j = 0; j < n; j++)
 			copy[i][j] = adj[i][j];
-
 	for (i = 0; i < n; i++)
 		for (j = 0; j < n; j++)
 			if (copy[i][j] != 0)
@@ -189,7 +184,6 @@ solution subgraph(graph g)
 	max = 0;
 	aux = allocate(g.edges, 2);
 	i = 1; 
-
 	while (i < g.edges - 1)
 	{
 		aux = copy(g.table, g.edges, 2);
@@ -265,7 +259,6 @@ void main()
 	{
 		printf("\nNo. of vertices: %d", g.vertices);
 		printf("\nNo. of edges: %d", g.edges);
-
 		display(g.table, g.edges, g.weight + 2, "\t~~~Table representation~~~");
 		display(g.adj, g.vertices, g.vertices, "\t~~~Adjacency Matrix~~~");
 
