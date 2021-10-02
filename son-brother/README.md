@@ -22,7 +22,7 @@ The root of the tree graph can be easily identified from the Son-Brother matrix 
 ## Additional files
 The [.txt file](https://github.com/andreea-511/cplusplusprojects/blob/main/son-brother/example.txt) offered as a tree graph representation example in order to test the source code can be found [here](https://github.com/andreea-511/cplusplusprojects/blob/main/son-brother/example.txt).
 
-###Observation 2:
+### Observation 2:
 On the first line of the .txt file there are two additional numbers that represent the number of vertices and the root of the tree graph respectively. As mentioned above, this information is not required but it is often provided in problems.
 
 ## How I solved it
