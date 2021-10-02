@@ -3,10 +3,9 @@
 #include <string.h>
 
 #define INF 10000 //infinite global variable
-//this is used for when we have weighted graphs
+//this is used for when we have weighted graphs -> when two vertices are not connected, in a weighted graph their weight will be infinite
 
 //			-----------------graph and queue structs-----------------
-
 //graph struct 
 typedef struct {
 	int vertices; // no. of vertices
@@ -23,10 +22,7 @@ typedef struct {
 	int edges; 
 } solution;
 
-
-
 //			-----------------dynamically allocated matrix-----------------
-
 //			~~~display a matrix~~~
 //input: a - matrix address; l - no. of lines; c - no. of columns; t - title*
 // * we set the parameter to 0 as default so that we can check if we want a title or not before displaying it
@@ -73,14 +69,12 @@ void deallocate(int**& a, int l)
 
 
 //			-----------------reading a graph from a text file-----------------
-
 //			~~~convert table representation to adjacency matrix~~~
 //input: g - graph
 //output: g - graph
 void convertMatrix(graph& g)
 {
 	int i, j, value; // value = the value we add in the table if there is no edge: INF - weighted; 0 - not weighted
-
 	g.adj = allocate(g.vertices, g.vertices); // allocate space for the adjacency matrix
 	if (g.weight == 0)
 		value = 0;
@@ -158,7 +152,6 @@ int** convert(int** table, int edges, int vertices, int orient)
 }
 
 //compute the path existance matrix (Roy-Warshall)
-
 int** roywarshall(int** adj, int n)
 {
 	int i, j, k;
@@ -178,8 +171,7 @@ int** roywarshall(int** adj, int n)
 	return copy;
 }
 
-//copy matrix b to address of matrix a
-
+//function to copy matrix b to address of matrix a
 int** copy( int **b, int lin, int col)
 {
 	int i, j, **a;
@@ -190,79 +182,12 @@ int** copy( int **b, int lin, int col)
 	return a;
 }
 
-//subprogram that solves the problem
-
-//solution* subgraph(graph g, int &q)
-//{
-//	int** aux, max, i, j, k, ** roy, edges, ** adj, ok;
-//	solution *sol;
-//	sol = new solution[g.edges * g.edges];
-//	max = 0;
-//
-//	aux=allocate(g.edges, 2);
-//
-//	edges = g.edges; i = 0; max = 0;
-//
-//	while (i < g.edges)
-//	{
-//		aux=copy( g.table, g.edges, 2);
-//		edges = g.edges;
-//		j = i;
-//
-//		ok = 1;
-//		while (j < g.edges && ok==1)
-//		{
-//			
-//			for (k =i+1; k < edges; k++)
-//			{
-//				aux[k - 1][0] = aux[k][0];
-//				aux[k - 1][1] = aux[k][1];
-//			}
-//			edges--;
-//			//display(aux, edges, 2, "\tAux Matrix");
-//
-//			adj=allocate(g.vertices, g.vertices);
-//			adj = convert(aux, edges, g.vertices, g.orient);
-//			roy = allocate(g.vertices, g.vertices);
-//			roy = roywarshall(adj, g.vertices);
-//
-//			//display(test, g.vertices, g.vertices, "\Test Matrix");
-//			//display(roy, g.vertices, g.vertices, "\Roy Matrix");
-//
-//			if (roy[g.table[0][0] - 1][g.table[g.edges - 1][1] - 1] == 0)
-//			{
-//				ok = 0;
-//			}
-//			else	
-//				if (j - i + 1 > max )
-//				{
-//					sol[q].matrix = allocate(edges, 2);
-//					sol[q].matrix = copy(aux, edges, 2);
-//					//display(sol[q].matrix, edges, 2, "\tSubgraph");
-//					sol[q].edges = edges;
-//					q++;
-//					max = j - i + 1;
-//				}
-//			j++;
-//			deallocate(adj, g.vertices);
-//			deallocate(roy, g.vertices);
-//
-//		}
-//		
-//		i++;
-//	}
-//	deallocate(aux, g.edges);
-//
-//	return sol;
-//}
-
 solution subgraph(graph g)
 {
 	int** aux, max, i, j, k, ** roy, edges, ** adj, ok;
 	solution sol;
 	max = 0;
 	aux = allocate(g.edges, 2);
-
 	i = 1; 
 
 	while (i < g.edges - 1)
@@ -270,30 +195,22 @@ solution subgraph(graph g)
 		aux = copy(g.table, g.edges, 2);
 		edges = g.edges;
 		j = i;
-
 		ok = 1;
 		while (j < g.edges - 1 && ok == 1)
 		{
-
 			for (k = i + 1; k < edges; k++)
 			{
 				aux[k - 1][0] = aux[k][0];
 				aux[k - 1][1] = aux[k][1];
 			}
 			edges--;
-
 			adj = allocate(g.vertices, g.vertices);
 			adj = convert(aux, edges, g.vertices, g.orient);
 			roy = allocate(g.vertices, g.vertices);
 			roy = roywarshall(adj, g.vertices);
 
-			//display(test, g.vertices, g.vertices, "\Test Matrix");
-			//display(roy, g.vertices, g.vertices, "\Roy Matrix");
-
 			if (roy[g.table[0][0] - 1][g.table[g.edges - 1][1] - 1] == 0)
-			{
 				ok = 0;
-			}
 			else
 				if (j - i + 1 > max)
 				{
@@ -301,38 +218,29 @@ solution subgraph(graph g)
 						deallocate(sol.matrix, sol.edges);
 					sol.matrix = allocate(edges, 2);
 					sol.matrix = copy(aux, edges, 2);
-					//display(sol[q].matrix, edges, 2, "\tSubgraph");
 					sol.edges = edges;
 					max = j - i + 1;
 				}
 			j++;
 			deallocate(adj, g.vertices);
 			deallocate(roy, g.vertices);
-
 		}
-
 		i++;
 	}
 	deallocate(aux, g.edges);
-
 	return sol;
 }
 
 //			-----------------main programs-----------------
-
 // main for finding the subgraph
-
 void main()
 {
 	graph g;
 	char name[30], weight, orient, useless[80];
 	int error, i;
 	solution sol;
-
-
 	printf("\nName of .txt file where the graph can be found: ");
 	gets_s(name);
-
 	printf("\n\nWeighted? (y/n) ");
 	scanf("%c", &weight);
 	gets_s(useless);
@@ -342,7 +250,6 @@ void main()
 		scanf("%c", &weight);
 		gets_s(useless);
 	}
-
 	printf("\n\nOriented? (y/n) ");
 	scanf("%c", &orient);
 	while (orient != 'y' && orient != 'n')
@@ -351,7 +258,6 @@ void main()
 		scanf("%c", &orient);
 		gets_s(useless);
 	}
-
 	error = readGraph(name, g, weight, orient);
 	if (error == 1)
 		printf("\nThe file could not be opened.\n");
@@ -363,26 +269,13 @@ void main()
 		display(g.table, g.edges, g.weight + 2, "\t~~~Table representation~~~");
 		display(g.adj, g.vertices, g.vertices, "\t~~~Adjacency Matrix~~~");
 
-		/*sol = new solution[g.vertices * g.vertices];
-
-		sol = subgraph(g, solutions);
-		min = g.edges;
-		for (i = 0; i < solutions; i++)
-			if (sol[i].edges < min)
-			{
-				min = sol[i].edges;
-				index = i;
-			}*/
-
 		sol = subgraph(g);
 
 		display(sol.matrix, sol.edges, 2, "\t~~~Subrgraph~~~");
-
 		printf("\n\nOriginal path is: ");
 		for (i = 0; i < g.edges; i++)
 			printf("%2d  - ", g.table[i][0]);
 		printf("%2d\n",g.table[g.edges - 1][1]);
-
 		printf("\n\nThe optimal path is: ");
 		for (i = 0; i < sol.edges; i++)
 			printf("%2d  - ", sol.matrix[i][0]);
@@ -393,7 +286,6 @@ void main()
 		deallocate(g.adj, g.vertices);
 
 	}
-
 	printf("\n\nDone, press any key to continue...\n");
 	_getch();
 }
