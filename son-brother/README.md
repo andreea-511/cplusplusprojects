@@ -26,7 +26,7 @@ The [.txt file](https://github.com/andreea-511/cplusplusprojects/blob/main/son-b
 On the first line of the .txt file there are two additional numbers that represent the number of vertices and the root of the tree graph respectively. As mentioned above, this information is not required but it is often provided in problems.
 
 ## How I solved it
-**The source code for this problem can be found [here](https://github.com/andreea-511/cplusplusprojects/blob/main/son-brother/son-brother.cpp)**
+**The source code for this problem can be found [here](https://github.com/andreea-511/cplusplusprojects/blob/main/son-brother/son-brother.cpp).**
 
 In order to solve the problem I created a new vector that has the parent of all vertices except the root which has -1. By reading the vector you can find the parent of any given vertex. But how do we make this vector?
 
